@@ -1,0 +1,29 @@
+{
+    "schemaVersion": 1,
+    "id": "no-telemetry",
+    "version": "${version}",
+    "name": "No Telemetry",
+    "description": "Disable the telemetry introduced in 21w38a",
+    "authors": [
+        "kb1000"
+    ],
+    "contact": {
+        "homepage": "https://fabricmc.net/",
+        "sources": "https://github.com/FabricMC/fabric-example-mod"
+    },
+    "license": "CC0-1.0",
+    "environment": "*",
+    "entrypoints": {
+        "preLaunch": [
+            "de.kb1000.notelemetry.NoTelemetry"
+        ]
+    },
+    "mixins": [
+        "no-telemetry.mixins.json"
+    ],
+    "depends": {
+        "fabricloader": ">=0.11.3",
+        "minecraft": ">=1.18-alpha.21.38.a",
+        "java": ">=16"
+    }
+}
