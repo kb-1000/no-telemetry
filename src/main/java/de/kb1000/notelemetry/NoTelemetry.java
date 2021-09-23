@@ -29,7 +29,7 @@ public class NoTelemetry implements PreLaunchEntrypoint {
     }
 
     // from Fabric Loader, copied to avoid depending on Loader internals
-    static Optional<URL> getSource(ClassLoader loader, String filename) {
+    private static Optional<URL> getSource(ClassLoader loader, String filename) {
         URL url;
 
         if ((url = loader.getResource(filename)) != null) {
