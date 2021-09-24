@@ -4,12 +4,13 @@
     "version": "${version}",
     "name": "No Telemetry",
     "description": "Disable the telemetry introduced in 21w38a",
+    "icon": "assets/no-telemetry/icon.png",
     "authors": [
         "kb1000"
     ],
     "contact": {
-        "homepage": "https://fabricmc.net/",
-        "sources": "https://github.com/FabricMC/fabric-example-mod"
+        "homepage": "https://github.com/kb-1000/no-telemetry",
+        "sources": "https://github.com/kb-1000/no-telemetry"
     },
     "license": "CC0-1.0",
     "environment": "*",
