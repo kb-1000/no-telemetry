@@ -6,7 +6,7 @@ Disables the pseudonymous diagnostics data collection, aka telemetry, introduced
 
 The feature previously existed from Minecraft 1.3.1 to 1.12 as [Snooper](https://minecraft.fandom.com/wiki/Snooper), but was removed in 1.13 [(snapshot 18w21a)](https://bugs.mojang.com/browse/MC-130179) as it did not comply with European Union's General Data Protection Regulations. 
 
-In 1.18 it was re-added in a compliant and presumably more private way, so it would now send the following data when loading a singleplayer world or connecting toa  multiplayer server:
+In 1.18 it was re-added in a compliant and presumably more private way, so it would now send the following data when loading a singleplayer world or connecting to a multiplayer server:
 
 * launcher identifier
 * user identitifer (XUID)
