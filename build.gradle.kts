@@ -1,6 +1,6 @@
 plugins {
 	id("fabric-loom") version "0.10-SNAPSHOT"
-	id("io.github.juuxel.loom-quiltflower") version "1.3.0"
+	id("io.github.juuxel.loom-quiltflower-mini") version "1.1.0"
 	id("maven-publish")
 }
 
@@ -10,10 +10,9 @@ repositories {
 	// Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
 	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
 	// for more information about repositories.
-}
-
-quiltflower {
-	quiltflowerVersion.set("1.5.0")
+	maven(url = "https://maven.minecraftforge.net") {
+		name = "Forge"
+	}
 }
 
 val archives_base_name: String by project.ext
@@ -22,6 +21,7 @@ val maven_group: String by project.ext
 val minecraft_version: String by project.ext
 val yarn_mappings: String by project.ext
 val loader_version: String by project.ext
+val forge_version: String by project.ext
 
 base.archivesName.set(archives_base_name)
 version = mod_version
@@ -32,6 +32,7 @@ dependencies {
 	minecraft("com.mojang:minecraft:${minecraft_version}")
 	mappings("net.fabricmc:yarn:${yarn_mappings}:v2")
 	modImplementation("net.fabricmc:fabric-loader:${loader_version}")
+	compileOnly("net.minecraftforge:javafmllanguage:${forge_version}")
 }
 
 tasks.processResources {
@@ -49,7 +50,7 @@ tasks.withType<JavaCompile> {
 	// If Javadoc is generated, this must be specified in that task too.
 	options.encoding = "UTF-8"
 
-	// Minecraft 1.17 (21w19a) upwards uses Java 16.
+	// The oldest supported version still uses Java 16.
 	options.release.set(16)
 }
 
@@ -68,19 +69,20 @@ tasks.jar {
 	from("LICENSE") {
 		rename { "${it}_${archives_base_name}"}
 	}
+
+	manifest {
+		attributes(
+			"MixinConfigs" to "no-telemetry.mixins.json",
+			"Implementation-Version" to project.version
+		)
+	}
 }
 
 // configure the maven publication
 publishing {
 	publications {
 		val mavenJava by creating(MavenPublication::class) {
-			// add all the jars that should be included when publishing to maven
-			artifact(tasks.remapJar) {
-				builtBy(tasks.remapJar)
-			}
-			artifact(tasks.getByName<Jar>("sourcesJar")) {
-				builtBy(tasks.remapSourcesJar)
-			}
+			from(components["java"])
 		}
 	}
 

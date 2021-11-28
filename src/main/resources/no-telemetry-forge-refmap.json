@@ -1,0 +1,14 @@
+{
+    "mappings": {
+        "de/kb1000/notelemetry/mixin/TelemetrySenderMixin": {
+            "Lnet/minecraft/SharedConstants;isDevelopment:Z": "Lnet/minecraft/SharedConstants;IS_RUNNING_IN_IDE:Z"
+        }
+    },
+    "data": {
+        "searge": {
+            "de/kb1000/notelemetry/mixin/TelemetrySenderMixin": {
+                "Lnet/minecraft/SharedConstants;isDevelopment:Z": "Lnet/minecraft/SharedConstants;IS_RUNNING_IN_IDE:Z"
+            }
+        }
+    }
+}

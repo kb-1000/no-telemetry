@@ -1,0 +1,19 @@
+modLoader = "javafml"
+loaderVersion = "[38,)"
+issueTrackerURL = "https://github.com/kb-1000/no-telemetry/issues"
+license = "CC0"
+
+[[mods]]
+modId = "no-telemetry"
+version = "${file.jarVersion}"
+displayName = "No Telemetry"
+description = "Disable the telemetry introduced in 21w38a"
+logoFile = "no-telemetry-icon.png"
+logoBlur = false
+authors = "kb1000"
+displayURL = "https://github.com/kb-1000/no-telemetry"
+
+[[no-telemetry.dependencies]]
+modId = "minecraft"
+mandatory = true
+# no versionRange, let's rely on the loader version

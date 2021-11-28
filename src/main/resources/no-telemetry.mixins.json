@@ -3,13 +3,12 @@
     "minVersion": "0.8",
     "package": "de.kb1000.notelemetry.mixin",
     "compatibilityLevel": "JAVA_16",
-    "mixins": [
-    ],
+    "plugin": "de.kb1000.notelemetry.NoTelemetryMixinConfigPlugin",
     "client": [
-        "Class6628Mixin",
+        "NewYggdrasilUserApiServiceMixin",
+        "TelemetrySenderMixin",
         "YggdrasilUserApiServiceMixin"
     ],
     "injectors": {
-        "defaultRequire": 1
     }
 }

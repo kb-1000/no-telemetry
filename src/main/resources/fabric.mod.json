@@ -4,19 +4,20 @@
     "version": "${version}",
     "name": "No Telemetry",
     "description": "Disable the telemetry introduced in 21w38a",
-    "icon": "assets/no-telemetry/icon.png",
+    "icon": "no-telemetry-icon.png",
     "authors": [
         "kb1000"
     ],
     "contact": {
         "homepage": "https://github.com/kb-1000/no-telemetry",
-        "sources": "https://github.com/kb-1000/no-telemetry"
+        "sources": "https://github.com/kb-1000/no-telemetry",
+        "issues": "https://github.com/kb-1000/no-telemetry/issues"
     },
     "license": "CC0-1.0",
     "environment": "*",
     "entrypoints": {
         "preLaunch": [
-            "de.kb1000.notelemetry.NoTelemetry"
+            "de.kb1000.notelemetry.NoTelemetryPreLaunch"
         ]
     },
     "mixins": [

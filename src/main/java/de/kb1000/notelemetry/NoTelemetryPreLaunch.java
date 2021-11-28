@@ -11,7 +11,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.Optional;
 
-public class NoTelemetry implements PreLaunchEntrypoint {
+public class NoTelemetryPreLaunch implements PreLaunchEntrypoint {
     public static final Logger LOGGER = LogManager.getLogger("no-telemetry");
 
     @Override
@@ -21,8 +21,9 @@ public class NoTelemetry implements PreLaunchEntrypoint {
             Method m = classLoader.getClass().getMethod("addURL", URL.class);
             m.setAccessible(true);
             m.invoke(classLoader, getSource(classLoader.getParent().getParent().getParent(), "com/mojang/authlib/yggdrasil/YggdrasilUserApiService.class").orElseThrow());
+            LOGGER.info("Added authlib to knot");
         } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
-            e.printStackTrace();
+            LOGGER.warn("Failed to add authlib to knot", e);
         }
 
         LOGGER.info("Killing telemetry");
