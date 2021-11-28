@@ -25,6 +25,9 @@ public class NoTelemetryMixinConfigPlugin implements IMixinConfigPlugin {
         if (mixinClassName.equals("de.kb1000.notelemetry.mixin.NewYggdrasilUserApiServiceMixin")) {
             return NoTelemetryMixinConfigPlugin.class.getClassLoader().getResource("com/mojang/authlib/yggdrasil/response/UserAttributesResponse$Privileges.class") != null;
         }
+        if (mixinClassName.equals("de.kb1000.notelemetry.mixin.TelemetrySenderMixin")) {
+            return (NoTelemetryMixinConfigPlugin.class.getClassLoader().getResource("net/minecraftforge/fml/common/Mod.class") != null) == targetClassName.equals("net.minecraft.client.ClientTelemetryManager");
+        }
         return true;
     }
 
