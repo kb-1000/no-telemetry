@@ -10,5 +10,7 @@
         "YggdrasilUserApiServiceMixin"
     ],
     "injectors": {
-    }
+        "defaultRequire": 1
+    },
+    "refmap": null
 }

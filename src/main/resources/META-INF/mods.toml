@@ -4,7 +4,7 @@ issueTrackerURL = "https://github.com/kb-1000/no-telemetry/issues"
 license = "CC0"
 
 [[mods]]
-modId = "no-telemetry"
+modId = "no_telemetry"
 version = "${file.jarVersion}"
 displayName = "No Telemetry"
 description = "Disable the telemetry introduced in 21w38a"
