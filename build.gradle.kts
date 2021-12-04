@@ -12,6 +12,10 @@ repositories {
 	// for more information about repositories.
 	maven(url = "https://maven.minecraftforge.net") {
 		name = "Forge"
+		metadataSources {
+			ignoreGradleMetadataRedirection()
+			mavenPom()
+		}
 	}
 }
 
