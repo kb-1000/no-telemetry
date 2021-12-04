@@ -9,6 +9,7 @@ import java.lang.reflect.Method;
 import java.net.JarURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 public class NoTelemetryPreLaunch implements PreLaunchEntrypoint {
@@ -20,9 +21,9 @@ public class NoTelemetryPreLaunch implements PreLaunchEntrypoint {
             ClassLoader classLoader = getClass().getClassLoader();
             Method m = classLoader.getClass().getMethod("addURL", URL.class);
             m.setAccessible(true);
-            m.invoke(classLoader, getSource(classLoader.getParent().getParent().getParent(), "com/mojang/authlib/yggdrasil/YggdrasilUserApiService.class").orElseThrow());
+            m.invoke(classLoader, getSource(classLoader, "com/mojang/authlib/yggdrasil/YggdrasilUserApiService.class").orElseThrow());
             LOGGER.info("Added authlib to knot");
-        } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+        } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException | NoSuchElementException e) {
             LOGGER.warn("Failed to add authlib to knot", e);
         }
 

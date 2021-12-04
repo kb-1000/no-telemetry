@@ -14,7 +14,7 @@
         "issues": "https://github.com/kb-1000/no-telemetry/issues"
     },
     "license": "CC0-1.0",
-    "environment": "*",
+    "environment": "client",
     "entrypoints": {
         "preLaunch": [
             "de.kb1000.notelemetry.NoTelemetryPreLaunch"
