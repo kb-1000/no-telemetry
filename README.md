@@ -1,6 +1,6 @@
 # No Telemetry
 
-Download from [Curseforge](https://curseforge.com/minecraft/mc-mods/no-telemetry/) or [Modrinth](https://github.com/kb-1000/no-telemetry).
+Download from [Curseforge](https://curseforge.com/minecraft/mc-mods/no-telemetry/) or [Modrinth](https://www.modrinth.com/mod/no-telemetry).
 
 Disables the usage data collection, aka telemetry, introduced in Minecraft 1.18 [(snapshot 21w38a)](https://www.minecraft.net/en-us/article/minecraft-snapshot-21w38a#main-content).
 
