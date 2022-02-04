@@ -1,5 +1,6 @@
 package de.kb1000.notelemetry;
 
+import net.fabricmc.loader.api.FabricLoader;
 import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
@@ -14,10 +15,14 @@ public class NoTelemetryMixinConfigPlugin implements IMixinConfigPlugin {
 
     @Override
     public String getRefMapperConfig() {
-        if (classExists("net.minecraftforge.fml.common.Mod")) {
+        if (isForge()) {
             return "no-telemetry-forge-refmap.json";
         }
         return "no-telemetry-refmap.json";
+    }
+
+    private boolean isForge() {
+        return classExists("net.minecraftforge.fml.common.Mod") && !classExists("net.fabricmc.loader.api.FabricLoader");
     }
 
     private static boolean classExists(String name) {
@@ -32,9 +37,6 @@ public class NoTelemetryMixinConfigPlugin implements IMixinConfigPlugin {
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
         if (mixinClassName.equals("de.kb1000.notelemetry.mixin.NewYggdrasilUserApiServiceMixin")) {
             return classExists("com.mojang.authlib.yggdrasil.response.UserAttributesResponse$Privileges");
-        }
-        if (mixinClassName.equals("de.kb1000.notelemetry.mixin.TelemetrySenderMixin")) {
-            return classExists("net.minecraftforge.fml.common.Mod") == targetClassName.equals("net.minecraft.client.ClientTelemetryManager");
         }
         return true;
     }

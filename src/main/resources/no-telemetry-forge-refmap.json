@@ -1,13 +1,15 @@
 {
     "mappings": {
         "de/kb1000/notelemetry/mixin/TelemetrySenderMixin": {
-            "Lnet/minecraft/SharedConstants;isDevelopment:Z": "Lnet/minecraft/SharedConstants;f_136183_:Z"
+            "Lnet/minecraft/SharedConstants;isDevelopment:Z": "Lnet/minecraft/SharedConstants;f_136183_:Z",
+            "net.minecraft.client.util.telemetry.TelemetrySender": "net/minecraft/client/ClientTelemetryManager"
         }
     },
     "data": {
         "searge": {
             "de/kb1000/notelemetry/mixin/TelemetrySenderMixin": {
-                "Lnet/minecraft/SharedConstants;isDevelopment:Z": "Lnet/minecraft/SharedConstants;f_136183_:Z"
+                "Lnet/minecraft/SharedConstants;isDevelopment:Z": "Lnet/minecraft/SharedConstants;f_136183_:Z",
+                "net.minecraft.client.util.telemetry.TelemetrySender": "net/minecraft/client/ClientTelemetryManager"
             }
         }
     }

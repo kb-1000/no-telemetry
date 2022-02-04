@@ -1,6 +1,6 @@
 plugins {
 	id("fabric-loom") version "0.10-SNAPSHOT"
-	id("io.github.juuxel.loom-quiltflower-mini") version "1.1.0"
+	id("io.github.juuxel.loom-quiltflower-mini") version "1.2.1"
 	id("maven-publish")
 }
 
@@ -31,19 +31,6 @@ base.archivesName.set(archives_base_name)
 version = mod_version
 group = maven_group
 
-sourceSets {
-	val headers by creating {
-		java {
-			compileClasspath += main.get().compileClasspath
-		}
-	}
-	main {
-		java {
-			compileClasspath += headers.output
-		}
-	}
-}
-
 dependencies {
 	// To change the versions see the gradle.properties file
 	minecraft("com.mojang:minecraft:${minecraft_version}")
@@ -69,10 +56,6 @@ tasks.withType<JavaCompile> {
 
 	// The oldest supported version still uses Java 16.
 	options.release.set(16)
-}
-
-tasks.javadoc {
-	classpath += sourceSets["headers"].output
 }
 
 java {
