@@ -1,7 +1,7 @@
 plugins {
-	id("fabric-loom") version "0.10-SNAPSHOT"
-	id("io.github.juuxel.loom-quiltflower-mini") version "1.2.1"
-	id("maven-publish")
+	id("fabric-loom") version "0.12-SNAPSHOT"
+	id("io.github.juuxel.loom-quiltflower") version "1.7.3"
+	`maven-publish`
 }
 
 repositories {
@@ -31,12 +31,30 @@ base.archivesName.set(archives_base_name)
 version = mod_version
 group = maven_group
 
+sourceSets {
+	val headers by creating {
+		java {
+			compileClasspath += main.get().compileClasspath
+		}
+	}
+	main {
+		java {
+			compileClasspath += headers.output
+		}
+	}
+}
+
 dependencies {
-	// To change the versions see the gradle.properties file
+	// To change the versions, see the gradle.properties file
 	minecraft("com.mojang:minecraft:${minecraft_version}")
-	mappings("net.fabricmc:yarn:${yarn_mappings}:v2")
+	mappings("net.fabricmc:yarn:$minecraft_version+build.$yarn_mappings:v2")
 	modImplementation("net.fabricmc:fabric-loader:${loader_version}")
-	compileOnly("net.minecraftforge:javafmllanguage:${forge_version}")
+	compileOnly("net.minecraftforge:javafmllanguage:${forge_version}") {
+		isTransitive = false
+	}
+	compileOnly("net.minecraftforge:fmlloader:${forge_version}") {
+		isTransitive = false
+	}
 }
 
 tasks.processResources {
@@ -56,6 +74,10 @@ tasks.withType<JavaCompile> {
 
 	// The oldest supported version still uses Java 16.
 	options.release.set(16)
+}
+
+tasks.javadoc {
+	classpath += sourceSets["headers"].output
 }
 
 java {
