@@ -1,16 +1,26 @@
 {
-    "mappings": {
-        "de/kb1000/notelemetry/mixin/TelemetrySenderMixin": {
-            "Lnet/minecraft/SharedConstants;isDevelopment:Z": "Lnet/minecraft/SharedConstants;f_136183_:Z",
-            "net.minecraft.client.util.telemetry.TelemetrySender": "net/minecraft/client/ClientTelemetryManager"
-        }
+  "mappings": {
+    "de/kb1000/notelemetry/mixin/Pre1193TelemetryManagerMixin": {
+      "net.minecraft.client.util.telemetry.TelemetryManager": "net/minecraft/client/ClientTelemetryManager",
+      "Lnet/minecraft/SharedConstants;isDevelopment:Z": "Lnet/minecraft/SharedConstants;f_136183_:Z"
     },
-    "data": {
-        "searge": {
-            "de/kb1000/notelemetry/mixin/TelemetrySenderMixin": {
-                "Lnet/minecraft/SharedConstants;isDevelopment:Z": "Lnet/minecraft/SharedConstants;f_136183_:Z",
-                "net.minecraft.client.util.telemetry.TelemetrySender": "net/minecraft/client/ClientTelemetryManager"
-            }
-        }
+    "de/kb1000/notelemetry/mixin/Post1193TelemetryManagerMixin": {
+      "net.minecraft.client.util.telemetry.TelemetryManager": "net/minecraft/client/telemetry/ClientTelemetryManager",
+      "Lnet/minecraft/SharedConstants;isDevelopment:Z": "Lnet/minecraft/SharedConstants;f_136183_:Z",
+      "Lnet/minecraft/client/util/telemetry/TelemetryManager;getSender": "Lnet/minecraft/client/telemetry/ClientTelemetryManager;m_261052_()Lnet/minecraft/client/telemetry/TelemetryEventSender;"
     }
+  },
+  "data": {
+    "searge": {
+      "de/kb1000/notelemetry/mixin/Pre1193TelemetryManagerMixin": {
+        "net.minecraft.client.util.telemetry.TelemetryManager": "net/minecraft/client/ClientTelemetryManager",
+        "Lnet/minecraft/SharedConstants;isDevelopment:Z": "Lnet/minecraft/SharedConstants;f_136183_:Z"
+      },
+      "de/kb1000/notelemetry/mixin/Post1193TelemetryManagerMixin": {
+        "net.minecraft.client.util.telemetry.TelemetryManager": "net/minecraft/client/telemetry/ClientTelemetryManager",
+        "Lnet/minecraft/SharedConstants;isDevelopment:Z": "Lnet/minecraft/SharedConstants;f_136183_:Z",
+        "Lnet/minecraft/client/util/telemetry/TelemetryManager;getSender": "Lnet/minecraft/client/telemetry/ClientTelemetryManager;m_261052_()Lnet/minecraft/client/telemetry/TelemetryEventSender;"
+      }
+    }
+  }
 }

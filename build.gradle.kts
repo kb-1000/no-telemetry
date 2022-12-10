@@ -1,6 +1,6 @@
 plugins {
-	id("fabric-loom") version "0.12-SNAPSHOT"
-	id("io.github.juuxel.loom-quiltflower") version "1.7.3"
+	id("fabric-loom") version "1.0-SNAPSHOT"
+	id("io.github.juuxel.loom-quiltflower") version "1.8.0"
 	`maven-publish`
 }
 
@@ -53,6 +53,9 @@ dependencies {
 		isTransitive = false
 	}
 	compileOnly("net.minecraftforge:fmlloader:${forge_version}") {
+		isTransitive = false
+	}
+	compileOnly("org.apache.maven:maven-artifact:3.8.5") {
 		isTransitive = false
 	}
 }
