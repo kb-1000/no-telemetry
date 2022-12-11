@@ -4,6 +4,12 @@
       "net.minecraft.client.util.telemetry.TelemetryManager": "net/minecraft/client/ClientTelemetryManager",
       "Lnet/minecraft/SharedConstants;isDevelopment:Z": "Lnet/minecraft/SharedConstants;f_136183_:Z"
     },
+    "de/kb1000/notelemetry/mixin/OptionsScreenMixin": {
+      "init": "Lnet/minecraft/client/gui/screens/OptionsScreen;m_7856_()V",
+      "Lnet/minecraft/client/gui/widget/GridWidget$Adder;add(Lnet/minecraft/client/gui/widget/ClickableWidget;)Lnet/minecraft/client/gui/widget/ClickableWidget;": "Lnet/minecraft/client/gui/components/GridWidget$RowHelper;m_261261_(Lnet/minecraft/client/gui/components/AbstractWidget;)Lnet/minecraft/client/gui/components/AbstractWidget;",
+      "Lnet/minecraft/client/gui/screen/option/OptionsScreen;TELEMETRY_TEXT:Lnet/minecraft/text/Text;": "Lnet/minecraft/client/gui/screens/OptionsScreen;f_260594_:Lnet/minecraft/network/chat/Component;",
+      "net.minecraft.client.gui.screen.option.OptionsScreen": "net/minecraft/client/gui/screens/OptionsScreen"
+    },
     "de/kb1000/notelemetry/mixin/Post1193TelemetryManagerMixin": {
       "net.minecraft.client.util.telemetry.TelemetryManager": "net/minecraft/client/telemetry/ClientTelemetryManager",
       "Lnet/minecraft/SharedConstants;isDevelopment:Z": "Lnet/minecraft/SharedConstants;f_136183_:Z",

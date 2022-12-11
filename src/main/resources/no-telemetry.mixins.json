@@ -6,6 +6,7 @@
     "plugin": "de.kb1000.notelemetry.NoTelemetryMixinConfigPlugin",
     "client": [
         "NewYggdrasilUserApiServiceMixin",
+        "OptionsScreenMixin",
         "Post1193TelemetryManagerMixin",
         "Pre1193TelemetryManagerMixin",
         "YggdrasilUserApiServiceMixin"
