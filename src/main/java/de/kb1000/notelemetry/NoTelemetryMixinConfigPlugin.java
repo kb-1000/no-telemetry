@@ -27,6 +27,7 @@ public class NoTelemetryMixinConfigPlugin implements IMixinConfigPlugin {
                     CommonUtil.classExists("com.mojang.authlib.yggdrasil.response.UserAttributesResponse$Privileges");
             case "de.kb1000.notelemetry.mixin.Post1193TelemetryManagerMixin", "de.kb1000.notelemetry.mixin.Pre1193TelemetryManagerMixin" ->
                     mixinClassName.equals("de.kb1000.notelemetry.mixin.Post1193TelemetryManagerMixin") == CommonUtil.minecraftNewerThan("1.19.3-alpha.22.46.a");
+            case "de.kb1000.notelemetry.mixin.OptionsScreenMixin" -> CommonUtil.minecraftNewerThan("1.19.3-alpha.22.46.a");
             default -> true;
         };
     }
