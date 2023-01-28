@@ -1,3 +1,10 @@
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
+import com.google.gson.JsonObject
+import java.io.FilterReader
+import java.io.Reader
+import java.io.StringReader
+
 plugins {
 	id("fabric-loom") version "1.0-SNAPSHOT"
 	id("io.github.juuxel.loom-quiltflower") version "1.8.0"
@@ -55,7 +62,7 @@ dependencies {
 	compileOnly("net.minecraftforge:fmlloader:${forge_version}") {
 		isTransitive = false
 	}
-	compileOnly("org.apache.maven:maven-artifact:3.8.5") {
+	compileOnly("org.apache.maven:maven-artifact:3.8.7") {
 		isTransitive = false
 	}
 }
@@ -93,6 +100,17 @@ java {
 	withSourcesJar()
     withJavadocJar()
 }
+/*object O {
+	class RefmapModifier(reader: Reader) : FilterReader(run {
+		val text = reader.readText()
+		val gson = GsonBuilder().setPrettyPrinting().create()
+		val tree = gson.fromJson(text, JsonObject::class.java)
+		for (mappings in arrayOf(tree.getAsJsonObject("mappings"), tree.getAsJsonObject("data").getAsJsonObject("named:intermediary"))) {
+			mappings.getAsJsonObject("de/kb1000/notelemetry/mixin/OptionsScreenMixin").addProperty("Lnet/minecraft/class_7845\$class_7939;method_47612(Lnet/minecraft/class_339;)Lnet/minecraft/class_339;", "Lnet/minecraft/class_7845\$class_7939;method_47612(Lnet/minecraft/class_339;)Lnet/minecraft/class_339;")
+		}
+		StringReader(gson.toJson(tree))
+	})
+}*/
 
 tasks.jar {
 	from("LICENSE") {
@@ -102,15 +120,19 @@ tasks.jar {
 	manifest {
 		attributes(
 			"MixinConfigs" to "no-telemetry.mixins.json",
-			"Implementation-Version" to project.version
+			"Implementation-Version" to project.version,
 		)
 	}
+
+	/*filesMatching("no-telemetry-refmap.json") {
+		filter(O.RefmapModifier::class.java)
+	}*/
 }
 
 // configure the maven publication
 publishing {
 	publications {
-		val mavenJava by creating(MavenPublication::class) {
+		create("mavenJava", MavenPublication::class) {
 			from(components["java"])
 		}
 	}
