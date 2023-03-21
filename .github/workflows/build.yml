@@ -14,9 +14,8 @@ jobs:
         java: [
           17    # Minimum supported by Minecraft
         ]
-        # run on Linux
-        os: ubuntu-22.04
-    runs-on: ${{ matrix.os }}
+    # run on Linux
+    runs-on: ubuntu-22.04
     steps:
       - name: checkout repository
         uses: actions/checkout@v3
