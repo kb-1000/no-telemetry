@@ -54,7 +54,7 @@ sourceSets {
 dependencies {
 	// To change the versions, see the gradle.properties file
 	minecraft("com.mojang:minecraft:${minecraft_version}")
-	mappings("net.fabricmc:yarn:$minecraft_version+build.$yarn_mappings:v2")
+	mappings("net.fabricmc:yarn:$yarn_mappings:v2")
 	modImplementation("net.fabricmc:fabric-loader:${loader_version}")
 	compileOnly("net.minecraftforge:javafmllanguage:${forge_version}") {
 		isTransitive = false
