@@ -5,6 +5,7 @@
     "compatibilityLevel": "JAVA_16",
     "plugin": "de.kb1000.notelemetry.NoTelemetryMixinConfigPlugin",
     "client": [
+        "MinecraftClientMixin",
         "NewYggdrasilUserApiServiceMixin",
         "OptionsScreenMixin",
         "Post1193TelemetryManagerMixin",

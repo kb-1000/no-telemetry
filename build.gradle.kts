@@ -6,8 +6,7 @@ import java.io.Reader
 import java.io.StringReader
 
 plugins {
-	id("fabric-loom") version "1.0-SNAPSHOT"
-	id("io.github.juuxel.loom-quiltflower") version "1.8.0"
+	id("fabric-loom") version "1.4-SNAPSHOT"
 	`maven-publish`
 }
 

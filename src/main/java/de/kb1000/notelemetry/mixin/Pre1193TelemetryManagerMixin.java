@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Pseudo
-@Mixin(targets = "net.minecraft.client.util.telemetry.TelemetryManager")
+@Mixin(targets = "net.minecraft.client.session.telemetry.TelemetryManager")
 @Environment(EnvType.CLIENT)
 public class Pre1193TelemetryManagerMixin {
     @Redirect(method = "<init>", at = @At(value = "FIELD", target = "Lnet/minecraft/SharedConstants;isDevelopment:Z"))
