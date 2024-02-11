@@ -4,7 +4,7 @@ Download from [Curseforge](https://www.curseforge.com/minecraft/mc-mods/no-telem
 
 Disables the usage data collection, aka telemetry, introduced in Minecraft 1.18 [(snapshot 21w38a)](https://www.minecraft.net/en-us/article/minecraft-snapshot-21w38a#main-content).
 
-The feature previously existed from Minecraft 1.3.1 to 1.12 as [Snooper](https://minecraft.fandom.com/wiki/Snooper), but was removed in 1.13 [(snapshot 18w21a)](https://bugs.mojang.com/browse/MC-130179) as it did not comply with European Union's General Data Protection Regulations. 
+The feature previously existed from Minecraft 1.3.1 to 1.12 as [Snooper](https://minecraft.wiki/w/Snooper), but was removed in 1.13 [(snapshot 18w21a)](https://bugs.mojang.com/browse/MC-130179) as it did not comply with European Union's General Data Protection Regulations. 
 
 In 1.18 it was re-added. You would expect it would be done in a more compliant way... However, from my understanding of GDPR, this is even less compliant than the original Snooper was.
 Instead of being anonymous/pseudonymous (at least, the ids in the snooper screen don't match my user id), it now sends the XUID, your Xbox user id, in plain text... which means this data can be traced back to your user.
