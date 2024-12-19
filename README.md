@@ -23,7 +23,3 @@ It now sends the following data when loading a singleplayer world or connecting 
 * game mode
 
 This time [Mojang did not add a toggle](https://bugs.mojang.com/browse/MC-237493) for interested users to turn it off, though, so this mod fixes that by disabling the telemetry entirely. 
-
-## License
-
-This mod is available under the CC0 license.

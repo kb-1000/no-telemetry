@@ -13,7 +13,7 @@
         "sources": "https://github.com/kb-1000/no-telemetry",
         "issues": "https://github.com/kb-1000/no-telemetry/issues"
     },
-    "license": "CC0-1.0",
+    "license": "MPL-2.0-no-copyleft-exception",
     "environment": "client",
     "entrypoints": {
         "preLaunch": [

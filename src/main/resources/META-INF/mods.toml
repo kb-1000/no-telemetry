@@ -1,7 +1,7 @@
 modLoader = "javafml"
 loaderVersion = "[38,)"
 issueTrackerURL = "https://github.com/kb-1000/no-telemetry/issues"
-license = "CC0"
+license = "MPL 2.0, https://mozilla.org/MPL/2.0/"
 
 [[mods]]
 modId = "no_telemetry"
