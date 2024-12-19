@@ -22,7 +22,11 @@ public class NoTelemetryMixinConfigPlugin implements IMixinConfigPlugin {
 
     @Override
     public String getRefMapperConfig() {
-        if (CommonUtil.isForge()) {
+        if (CommonUtil.isMojank() && CommonUtil.minecraftNewerThan("1.21")) {
+            return "no-telemetry-mojank-refmap.json";
+        } else if (CommonUtil.isMojank()) {
+            return "no-telemetry-mojank-1.20-refmap.json";
+        } else if (CommonUtil.isForge()) {
             return "no-telemetry-forge-refmap.json";
         }
         return "no-telemetry-refmap.json";

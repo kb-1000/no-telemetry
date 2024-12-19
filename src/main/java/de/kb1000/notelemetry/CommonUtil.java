@@ -9,8 +9,16 @@
 package de.kb1000.notelemetry;
 
 class CommonUtil {
+    static boolean isNeoForge() {
+        return false; // TODO
+    }
+
     static boolean isForge() {
         return classExists("net.minecraftforge.fml.common.Mod") && !classExists("net.fabricmc.loader.api.FabricLoader");
+    }
+
+    static boolean isMojank() {
+        return isNeoForge() || (isForge() && minecraftNewerThan("1.20.5"));
     }
 
     static boolean classExists(String name) {
