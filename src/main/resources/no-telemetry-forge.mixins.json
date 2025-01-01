@@ -3,7 +3,7 @@
     "minVersion": "0.8",
     "package": "de.kb1000.notelemetry.mixin",
     "compatibilityLevel": "JAVA_16",
-    "plugin": "de.kb1000.notelemetry.NoTelemetryFabricMixinConfigPlugin",
+    "plugin": "de.kb1000.notelemetry.NoTelemetryForgeMixinConfigPlugin",
     "client": [
         "MinecraftClientMixin",
         "NewYggdrasilUserApiServiceMixin",
@@ -14,5 +14,6 @@
     ],
     "injectors": {
         "defaultRequire": 1
-    }
+    },
+    "refmap": null
 }

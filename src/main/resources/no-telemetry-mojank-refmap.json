@@ -1,0 +1,48 @@
+{
+  "mappings": {
+    "de/kb1000/notelemetry/mixin/MinecraftClientMixin": {
+      "isTelemetryEnabledByApi()Z": "Lnet/minecraft/client/Minecraft;allowsTelemetry()Z",
+      "net.minecraft.client.MinecraftClient": "net/minecraft/client/Minecraft"
+    },
+    "de/kb1000/notelemetry/mixin/OptionsScreenMixin": {
+      "Lnet/minecraft/client/gui/screen/option/OptionsScreen;TELEMETRY_TEXT:Lnet/minecraft/text/Text;": "Lnet/minecraft/client/gui/screens/options/OptionsScreen;TELEMETRY:Lnet/minecraft/network/chat/Component;",
+      "Lnet/minecraft/client/gui/widget/GridWidget$Adder;add(Lnet/minecraft/client/gui/widget/Widget;)Lnet/minecraft/client/gui/widget/Widget;": "Lnet/minecraft/client/gui/layouts/GridLayout$RowHelper;addChild(Lnet/minecraft/client/gui/layouts/LayoutElement;)Lnet/minecraft/client/gui/layouts/LayoutElement;",
+      "init": "Lnet/minecraft/client/gui/screens/options/OptionsScreen;init()V",
+      "net.minecraft.client.gui.screen.option.OptionsScreen": "net/minecraft/client/gui/screens/options/OptionsScreen"
+    },
+    "de/kb1000/notelemetry/mixin/Post1193TelemetryManagerMixin": {
+      "Lnet/minecraft/SharedConstants;isDevelopment:Z": "Lnet/minecraft/SharedConstants;IS_RUNNING_IN_IDE:Z",
+      "Lnet/minecraft/client/MinecraftClient;isTelemetryEnabledByApi()Z": "Lnet/minecraft/client/Minecraft;allowsTelemetry()Z",
+      "Lnet/minecraft/client/session/telemetry/TelemetryManager;computeSender": "Lnet/minecraft/client/telemetry/ClientTelemetryManager;createEventSender()Lnet/minecraft/client/telemetry/TelemetryEventSender;",
+      "net.minecraft.client.session.telemetry.TelemetryManager": "net/minecraft/client/telemetry/ClientTelemetryManager"
+    },
+    "de/kb1000/notelemetry/mixin/Pre1193TelemetryManagerMixin": {
+      "Lnet/minecraft/SharedConstants;isDevelopment:Z": "Lnet/minecraft/SharedConstants;IS_RUNNING_IN_IDE:Z",
+      "net.minecraft.client.session.telemetry.TelemetryManager": "net/minecraft/client/telemetry/ClientTelemetryManager"
+    }
+  },
+  "data": {
+    "named": {
+      "de/kb1000/notelemetry/mixin/MinecraftClientMixin": {
+        "isTelemetryEnabledByApi()Z": "Lnet/minecraft/client/Minecraft;allowsTelemetry()Z",
+        "net.minecraft.client.MinecraftClient": "net/minecraft/client/Minecraft"
+      },
+      "de/kb1000/notelemetry/mixin/OptionsScreenMixin": {
+        "Lnet/minecraft/client/gui/screen/option/OptionsScreen;TELEMETRY_TEXT:Lnet/minecraft/text/Text;": "Lnet/minecraft/client/gui/screens/options/OptionsScreen;TELEMETRY:Lnet/minecraft/network/chat/Component;",
+        "Lnet/minecraft/client/gui/widget/GridWidget$Adder;add(Lnet/minecraft/client/gui/widget/Widget;)Lnet/minecraft/client/gui/widget/Widget;": "Lnet/minecraft/client/gui/layouts/GridLayout$RowHelper;addChild(Lnet/minecraft/client/gui/layouts/LayoutElement;)Lnet/minecraft/client/gui/layouts/LayoutElement;",
+        "init": "Lnet/minecraft/client/gui/screens/options/OptionsScreen;init()V",
+        "net.minecraft.client.gui.screen.option.OptionsScreen": "net/minecraft/client/gui/screens/options/OptionsScreen"
+      },
+      "de/kb1000/notelemetry/mixin/Post1193TelemetryManagerMixin": {
+        "Lnet/minecraft/SharedConstants;isDevelopment:Z": "Lnet/minecraft/SharedConstants;IS_RUNNING_IN_IDE:Z",
+        "Lnet/minecraft/client/MinecraftClient;isTelemetryEnabledByApi()Z": "Lnet/minecraft/client/Minecraft;allowsTelemetry()Z",
+        "Lnet/minecraft/client/session/telemetry/TelemetryManager;computeSender": "Lnet/minecraft/client/telemetry/ClientTelemetryManager;createEventSender()Lnet/minecraft/client/telemetry/TelemetryEventSender;",
+        "net.minecraft.client.session.telemetry.TelemetryManager": "net/minecraft/client/telemetry/ClientTelemetryManager"
+      },
+      "de/kb1000/notelemetry/mixin/Pre1193TelemetryManagerMixin": {
+        "Lnet/minecraft/SharedConstants;isDevelopment:Z": "Lnet/minecraft/SharedConstants;IS_RUNNING_IN_IDE:Z",
+        "net.minecraft.client.session.telemetry.TelemetryManager": "net/minecraft/client/telemetry/ClientTelemetryManager"
+      }
+    }
+  }
+}

@@ -1,6 +1,5 @@
 modLoader = "javafml"
-# We can't rely on loaderVersion thanks to early NeoForge using mods.toml
-loaderVersion = "*"
+loaderVersion = "[1,)"
 issueTrackerURL = "https://github.com/kb-1000/no-telemetry/issues"
 license = "MPL 2.0, https://mozilla.org/MPL/2.0/"
 
@@ -20,4 +19,4 @@ displayURL = "https://github.com/kb-1000/no-telemetry"
 [[no-telemetry.dependencies]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.18,)"
+# no versionRange, let's rely on the loader version
