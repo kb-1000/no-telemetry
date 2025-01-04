@@ -8,6 +8,10 @@
  */
 package de.kb1000.notelemetry;
 
+import net.minecraftforge.fml.loading.FMLLoader;
+import org.apache.maven.artifact.versioning.DefaultArtifactVersion;
+import org.apache.maven.artifact.versioning.InvalidVersionSpecificationException;
+import org.apache.maven.artifact.versioning.VersionRange;
 import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
@@ -29,9 +33,9 @@ public class NoTelemetryForgeMixinConfigPlugin implements IMixinConfigPlugin {
             return null;
         }
 
-        if (ForgeUtil.minecraftNewerThan("1.21")) {
+        if (Util.minecraftNewerThan("1.21")) {
             return "no-telemetry-mojank-refmap.json";
-        } else if (ForgeUtil.minecraftNewerThan("1.20.5")) {
+        } else if (Util.minecraftNewerThan("1.20.5")) {
             return "no-telemetry-mojank-1.20-refmap.json";
         }
 
@@ -48,9 +52,9 @@ public class NoTelemetryForgeMixinConfigPlugin implements IMixinConfigPlugin {
             // You can't use snapshots on Forge!
             case "de.kb1000.notelemetry.mixin.YggdrasilUserApiServiceMixin" -> false;
             case "de.kb1000.notelemetry.mixin.Pre1193TelemetryManagerMixin" ->
-                    !ForgeUtil.minecraftNewerThan("1.19.3-alpha.22.46.a");
+                    !Util.minecraftNewerThan("1.19.3-alpha.22.46.a");
             case "de.kb1000.notelemetry.mixin.MinecraftClientMixin", "de.kb1000.notelemetry.mixin.OptionsScreenMixin",
-                    "de.kb1000.notelemetry.mixin.Post1193TelemetryManagerMixin" -> ForgeUtil.minecraftNewerThan("1.19.3-alpha.22.46.a");
+                    "de.kb1000.notelemetry.mixin.Post1193TelemetryManagerMixin" -> Util.minecraftNewerThan("1.19.3-alpha.22.46.a");
             default -> true;
         };
     }
@@ -70,5 +74,15 @@ public class NoTelemetryForgeMixinConfigPlugin implements IMixinConfigPlugin {
 
     @Override
     public void postApply(String targetClassName, ClassNode targetClass, String mixinClassName, IMixinInfo mixinInfo) {
+    }
+
+    private static class Util {
+        private static boolean minecraftNewerThan(String version) {
+            try {
+                return VersionRange.createFromVersionSpec("[" + version + ",)").containsVersion(new DefaultArtifactVersion(FMLLoader.versionInfo().mcVersion()));
+            } catch (InvalidVersionSpecificationException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 }

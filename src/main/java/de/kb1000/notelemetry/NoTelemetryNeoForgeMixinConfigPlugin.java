@@ -8,6 +8,10 @@
  */
 package de.kb1000.notelemetry;
 
+import net.neoforged.fml.loading.FMLLoader;
+import org.apache.maven.artifact.versioning.DefaultArtifactVersion;
+import org.apache.maven.artifact.versioning.InvalidVersionSpecificationException;
+import org.apache.maven.artifact.versioning.VersionRange;
 import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
@@ -22,7 +26,7 @@ public class NoTelemetryNeoForgeMixinConfigPlugin implements IMixinConfigPlugin 
 
     @Override
     public String getRefMapperConfig() {
-        if (NeoForgeUtil.minecraftNewerThan("1.21")) {
+        if (Util.minecraftNewerThan("1.21")) {
             return "no-telemetry-mojank-refmap.json";
         } else {
             return "no-telemetry-mojank-1.20-refmap.json";
@@ -50,5 +54,15 @@ public class NoTelemetryNeoForgeMixinConfigPlugin implements IMixinConfigPlugin 
 
     @Override
     public void postApply(String targetClassName, ClassNode targetClass, String mixinClassName, IMixinInfo mixinInfo) {
+    }
+
+    private static class Util {
+        private static boolean minecraftNewerThan(String version) {
+            try {
+                return VersionRange.createFromVersionSpec("[" + version + ",)").containsVersion(new DefaultArtifactVersion(FMLLoader.versionInfo().mcVersion()));
+            } catch (InvalidVersionSpecificationException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 }
