@@ -12,7 +12,6 @@ import com.mojang.authlib.minecraft.TelemetrySession;
 import com.mojang.authlib.yggdrasil.YggdrasilUserApiService;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
-import org.spongepowered.asm.mixin.injection.Group;
 
 import java.util.concurrent.Executor;
 

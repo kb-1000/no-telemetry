@@ -12,18 +12,8 @@ import net.neoforged.fml.loading.FMLLoader;
 import org.apache.maven.artifact.versioning.DefaultArtifactVersion;
 import org.apache.maven.artifact.versioning.InvalidVersionSpecificationException;
 import org.apache.maven.artifact.versioning.VersionRange;
-import org.objectweb.asm.tree.ClassNode;
-import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
-import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
 
-import java.util.List;
-import java.util.Set;
-
-public class NoTelemetryNeoForgeMixinConfigPlugin implements IMixinConfigPlugin {
-    @Override
-    public void onLoad(String mixinPackage) {
-    }
-
+public class NoTelemetryNeoForgeAbstractMixinConfigPlugin extends NoTelemetryAbstractMixinConfigPlugin {
     @Override
     public String getRefMapperConfig() {
         if (Util.minecraftNewerThan("1.21")) {
@@ -37,23 +27,6 @@ public class NoTelemetryNeoForgeMixinConfigPlugin implements IMixinConfigPlugin 
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
         // We can just use the mixin.json for this, for now!
         return true;
-    }
-
-    @Override
-    public void acceptTargets(Set<String> myTargets, Set<String> otherTargets) {
-    }
-
-    @Override
-    public List<String> getMixins() {
-        return null;
-    }
-
-    @Override
-    public void preApply(String targetClassName, ClassNode targetClass, String mixinClassName, IMixinInfo mixinInfo) {
-    }
-
-    @Override
-    public void postApply(String targetClassName, ClassNode targetClass, String mixinClassName, IMixinInfo mixinInfo) {
     }
 
     private static class Util {

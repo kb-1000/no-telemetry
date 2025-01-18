@@ -12,24 +12,18 @@ import net.minecraftforge.fml.loading.FMLLoader;
 import org.apache.maven.artifact.versioning.DefaultArtifactVersion;
 import org.apache.maven.artifact.versioning.InvalidVersionSpecificationException;
 import org.apache.maven.artifact.versioning.VersionRange;
-import org.objectweb.asm.tree.ClassNode;
-import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
-import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
 
-import java.util.List;
-import java.util.Set;
-
-public class NoTelemetryForgeMixinConfigPlugin implements IMixinConfigPlugin {
+public class NoTelemetryForgeMixinConfigPlugin extends NoTelemetryAbstractMixinConfigPlugin {
     private boolean isForgeNeo = false;
 
     @Override
     public void onLoad(String mixinPackage) {
-        isForgeNeo = CommonUtil.isForgeNeo();
+        this.isForgeNeo = Util.isForgeNeo();
     }
 
     @Override
     public String getRefMapperConfig() {
-        if (isForgeNeo) {
+        if (this.isForgeNeo) {
             return null;
         }
 
@@ -44,7 +38,7 @@ public class NoTelemetryForgeMixinConfigPlugin implements IMixinConfigPlugin {
 
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
-        if (isForgeNeo) {
+        if (this.isForgeNeo) {
             return false;
         }
 
@@ -59,29 +53,20 @@ public class NoTelemetryForgeMixinConfigPlugin implements IMixinConfigPlugin {
         };
     }
 
-    @Override
-    public void acceptTargets(Set<String> myTargets, Set<String> otherTargets) {
-    }
-
-    @Override
-    public List<String> getMixins() {
-        return null;
-    }
-
-    @Override
-    public void preApply(String targetClassName, ClassNode targetClass, String mixinClassName, IMixinInfo mixinInfo) {
-    }
-
-    @Override
-    public void postApply(String targetClassName, ClassNode targetClass, String mixinClassName, IMixinInfo mixinInfo) {
-    }
-
     private static class Util {
         private static boolean minecraftNewerThan(String version) {
             try {
                 return VersionRange.createFromVersionSpec("[" + version + ",)").containsVersion(new DefaultArtifactVersion(FMLLoader.versionInfo().mcVersion()));
             } catch (InvalidVersionSpecificationException e) {
                 throw new RuntimeException(e);
+            }
+        }
+
+        private static boolean isForgeNeo() {
+            try {
+                return NoTelemetryFabricAbstractMixinConfigPlugin.class.getClassLoader().loadClass("net.neoforged.fml.common.Mod") != null;
+            } catch (Exception | LinkageError e) {
+                return false;
             }
         }
     }
