@@ -16,7 +16,7 @@ import org.apache.maven.artifact.versioning.VersionRange;
 public class NoTelemetryNeoForgeAbstractMixinConfigPlugin extends NoTelemetryAbstractMixinConfigPlugin {
     @Override
     public String getRefMapperConfig() {
-        if (Util.minecraftNewerThan("1.21")) {
+        if (this.minecraftNewerThan("1.21")) {
             return "no-telemetry-mojank-refmap.json";
         } else {
             return "no-telemetry-mojank-1.20-refmap.json";
@@ -29,13 +29,11 @@ public class NoTelemetryNeoForgeAbstractMixinConfigPlugin extends NoTelemetryAbs
         return true;
     }
 
-    private static class Util {
-        private static boolean minecraftNewerThan(String version) {
-            try {
-                return VersionRange.createFromVersionSpec("[" + version + ",)").containsVersion(new DefaultArtifactVersion(FMLLoader.versionInfo().mcVersion()));
-            } catch (InvalidVersionSpecificationException e) {
-                throw new RuntimeException(e);
-            }
+    protected boolean minecraftNewerThan(String version) {
+        try {
+            return VersionRange.createFromVersionSpec("[" + version + ",)").containsVersion(new DefaultArtifactVersion(FMLLoader.versionInfo().mcVersion()));
+        } catch (InvalidVersionSpecificationException e) {
+            throw new RuntimeException(e);
         }
     }
 }

@@ -18,7 +18,7 @@ public class NoTelemetryForgeMixinConfigPlugin extends NoTelemetryAbstractMixinC
 
     @Override
     public void onLoad(String mixinPackage) {
-        this.isForgeNeo = Util.isForgeNeo();
+        this.isForgeNeo = isForgeNeo();
     }
 
     @Override
@@ -27,9 +27,9 @@ public class NoTelemetryForgeMixinConfigPlugin extends NoTelemetryAbstractMixinC
             return null;
         }
 
-        if (Util.minecraftNewerThan("1.21")) {
+        if (this.minecraftNewerThan("1.21")) {
             return "no-telemetry-mojank-refmap.json";
-        } else if (Util.minecraftNewerThan("1.20.5")) {
+        } else if (this.minecraftNewerThan("1.20.5")) {
             return "no-telemetry-mojank-1.20-refmap.json";
         }
 
@@ -42,32 +42,23 @@ public class NoTelemetryForgeMixinConfigPlugin extends NoTelemetryAbstractMixinC
             return false;
         }
 
-        return switch (mixinClassName) {
-            // You can't use snapshots on Forge!
-            case "de.kb1000.notelemetry.mixin.YggdrasilUserApiServiceMixin" -> false;
-            case "de.kb1000.notelemetry.mixin.Pre1193TelemetryManagerMixin" ->
-                    !Util.minecraftNewerThan("1.19.3-alpha.22.46.a");
-            case "de.kb1000.notelemetry.mixin.MinecraftClientMixin", "de.kb1000.notelemetry.mixin.OptionsScreenMixin",
-                    "de.kb1000.notelemetry.mixin.Post1193TelemetryManagerMixin" -> Util.minecraftNewerThan("1.19.3-alpha.22.46.a");
-            default -> true;
-        };
+        return !this.isForgeNeo && super.shouldApplyMixin(targetClassName, mixinClassName);
     }
 
-    private static class Util {
-        private static boolean minecraftNewerThan(String version) {
-            try {
-                return VersionRange.createFromVersionSpec("[" + version + ",)").containsVersion(new DefaultArtifactVersion(FMLLoader.versionInfo().mcVersion()));
-            } catch (InvalidVersionSpecificationException e) {
-                throw new RuntimeException(e);
-            }
+    @Override
+    protected boolean minecraftNewerThan(String version) {
+        try {
+            return VersionRange.createFromVersionSpec("[" + version + ",)").containsVersion(new DefaultArtifactVersion(FMLLoader.versionInfo().mcVersion()));
+        } catch (InvalidVersionSpecificationException e) {
+            throw new RuntimeException(e);
         }
+    }
 
-        private static boolean isForgeNeo() {
-            try {
-                return NoTelemetryFabricAbstractMixinConfigPlugin.class.getClassLoader().loadClass("net.neoforged.fml.common.Mod") != null;
-            } catch (Exception | LinkageError e) {
-                return false;
-            }
+    private static boolean isForgeNeo() {
+        try {
+            return NoTelemetryFabricAbstractMixinConfigPlugin.class.getClassLoader().loadClass("net.neoforged.fml.common.Mod") != null;
+        } catch (Exception | LinkageError e) {
+            return false;
         }
     }
 }
