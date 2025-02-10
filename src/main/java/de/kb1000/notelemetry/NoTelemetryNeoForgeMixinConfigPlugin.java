@@ -13,7 +13,7 @@ import org.apache.maven.artifact.versioning.DefaultArtifactVersion;
 import org.apache.maven.artifact.versioning.InvalidVersionSpecificationException;
 import org.apache.maven.artifact.versioning.VersionRange;
 
-public class NoTelemetryNeoForgeAbstractMixinConfigPlugin extends NoTelemetryAbstractMixinConfigPlugin {
+public class NoTelemetryNeoForgeMixinConfigPlugin extends NoTelemetryAbstractMixinConfigPlugin {
     @Override
     public String getRefMapperConfig() {
         if (this.minecraftNewerThan("1.21")) {

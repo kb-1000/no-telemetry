@@ -56,7 +56,7 @@ public class NoTelemetryForgeMixinConfigPlugin extends NoTelemetryAbstractMixinC
 
     private static boolean isForgeNeo() {
         try {
-            return NoTelemetryFabricAbstractMixinConfigPlugin.class.getClassLoader().loadClass("net.neoforged.fml.common.Mod") != null;
+            return NoTelemetryFabricMixinConfigPlugin.class.getClassLoader().loadClass("net.neoforged.fml.common.Mod") != null;
         } catch (Exception | LinkageError e) {
             return false;
         }

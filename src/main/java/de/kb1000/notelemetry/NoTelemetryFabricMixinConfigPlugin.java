@@ -12,7 +12,7 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.SemanticVersion;
 import net.fabricmc.loader.api.VersionParsingException;
 
-public class NoTelemetryFabricAbstractMixinConfigPlugin extends NoTelemetryAbstractMixinConfigPlugin {
+public class NoTelemetryFabricMixinConfigPlugin extends NoTelemetryAbstractMixinConfigPlugin {
     @Override
     protected boolean minecraftNewerThan(String version) {
         try {
