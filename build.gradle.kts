@@ -7,7 +7,7 @@
  * defined by the Mozilla Public License, v. 2.0.
  */
 plugins {
-	id("fabric-loom") version "1.6-SNAPSHOT"
+	id("fabric-loom") version "1.10-SNAPSHOT"
 	`maven-publish`
 }
 
@@ -24,6 +24,14 @@ repositories {
 			mavenPom()
 		}
 	}
+
+	maven(url = "https://maven.neoforged.net/releases") {
+		name = "NeoForge"
+		metadataSources {
+			ignoreGradleMetadataRedirection()
+			mavenPom()
+		}
+	}
 }
 
 val archives_base_name: String by project.ext
@@ -33,6 +41,7 @@ val minecraft_version: String by project.ext
 val yarn_mappings: String by project.ext
 val loader_version: String by project.ext
 val forge_version: String by project.ext
+val neofml_version: String by project.ext
 
 base.archivesName.set(archives_base_name)
 version = mod_version
@@ -60,6 +69,9 @@ dependencies {
 		isTransitive = false
 	}
 	compileOnly("net.minecraftforge:fmlloader:${forge_version}") {
+		isTransitive = false
+	}
+	compileOnly("net.neoforged.fancymodloader:loader:${neofml_version}") {
 		isTransitive = false
 	}
 	compileOnly("org.apache.maven:maven-artifact:3.8.7") {
@@ -119,7 +131,7 @@ tasks.jar {
 
 	manifest {
 		attributes(
-			"MixinConfigs" to "no-telemetry.mixins.json",
+			"MixinConfigs" to "no-telemetry-forge.mixins.json",
 			"Implementation-Version" to project.version,
 		)
 	}

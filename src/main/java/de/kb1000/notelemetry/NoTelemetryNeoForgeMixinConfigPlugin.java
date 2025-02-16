@@ -8,13 +8,28 @@
  */
 package de.kb1000.notelemetry;
 
-import net.minecraftforge.fml.loading.FMLLoader;
+import net.neoforged.fml.loading.FMLLoader;
 import org.apache.maven.artifact.versioning.DefaultArtifactVersion;
 import org.apache.maven.artifact.versioning.InvalidVersionSpecificationException;
 import org.apache.maven.artifact.versioning.VersionRange;
 
-public class ForgeUtil {
-    public static boolean minecraftNewerThan(String version) {
+public class NoTelemetryNeoForgeMixinConfigPlugin extends NoTelemetryAbstractMixinConfigPlugin {
+    @Override
+    public String getRefMapperConfig() {
+        if (this.minecraftNewerThan("1.21")) {
+            return "no-telemetry-mojank-refmap.json";
+        } else {
+            return "no-telemetry-mojank-1.20-refmap.json";
+        }
+    }
+
+    @Override
+    public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
+        // We can just use the mixin.json for this, for now!
+        return true;
+    }
+
+    protected boolean minecraftNewerThan(String version) {
         try {
             return VersionRange.createFromVersionSpec("[" + version + ",)").containsVersion(new DefaultArtifactVersion(FMLLoader.versionInfo().mcVersion()));
         } catch (InvalidVersionSpecificationException e) {
