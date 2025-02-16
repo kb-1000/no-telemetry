@@ -7,7 +7,7 @@
  * defined by the Mozilla Public License, v. 2.0.
  */
 plugins {
-	id("fabric-loom") version "1.9.2"
+	id("fabric-loom") version "1.10-SNAPSHOT"
 	`maven-publish`
 }
 
