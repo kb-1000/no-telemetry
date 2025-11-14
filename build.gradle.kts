@@ -7,7 +7,7 @@
  * defined by the Mozilla Public License, v. 2.0.
  */
 plugins {
-	id("fabric-loom") version "1.10-SNAPSHOT"
+	id("fabric-loom") version "1.13-SNAPSHOT"
 	`maven-publish`
 }
 
@@ -47,19 +47,6 @@ base.archivesName.set(archives_base_name)
 version = mod_version
 group = maven_group
 
-sourceSets {
-	val headers by creating {
-		java {
-			compileClasspath += main.get().compileClasspath
-		}
-	}
-	main {
-		java {
-			compileClasspath += headers.output
-		}
-	}
-}
-
 dependencies {
 	// To change the versions, see the gradle.properties file
 	minecraft("com.mojang:minecraft:${minecraft_version}")
@@ -98,10 +85,6 @@ tasks.withType<JavaCompile> {
 	options.release.set(16)
 }
 
-tasks.javadoc {
-	classpath += sourceSets["headers"].output
-}
-
 java {
 	sourceCompatibility = JavaVersion.VERSION_16
 	targetCompatibility = JavaVersion.VERSION_16
@@ -112,17 +95,12 @@ java {
 	withSourcesJar()
     withJavadocJar()
 }
-/*object O {
-	class RefmapModifier(reader: Reader) : FilterReader(run {
-		val text = reader.readText()
-		val gson = GsonBuilder().setPrettyPrinting().create()
-		val tree = gson.fromJson(text, JsonObject::class.java)
-		for (mappings in arrayOf(tree.getAsJsonObject("mappings"), tree.getAsJsonObject("data").getAsJsonObject("named:intermediary"))) {
-			mappings.getAsJsonObject("de/kb1000/notelemetry/mixin/OptionsScreenMixin").addProperty("Lnet/minecraft/class_7845\$class_7939;method_47612(Lnet/minecraft/class_339;)Lnet/minecraft/class_339;", "Lnet/minecraft/class_7845\$class_7939;method_47612(Lnet/minecraft/class_339;)Lnet/minecraft/class_339;")
-		}
-		StringReader(gson.toJson(tree))
-	})
-}*/
+
+loom {
+	mixin {
+		useLegacyMixinAp = true
+	}
+}
 
 tasks.jar {
 	from("LICENSE") {
@@ -135,10 +113,6 @@ tasks.jar {
 			"Implementation-Version" to project.version,
 		)
 	}
-
-	/*filesMatching("no-telemetry-refmap.json") {
-		filter(O.RefmapModifier::class.java)
-	}*/
 }
 
 // configure the maven publication
