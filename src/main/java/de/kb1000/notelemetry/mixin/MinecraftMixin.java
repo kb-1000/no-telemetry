@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(targets = "net.minecraft.client.Minecraft")
-public class MinecraftClientMixin {
+public class MinecraftMixin {
     @Inject(method = "allowsTelemetry()Z", at = @At("HEAD"), cancellable = true)
     public void isTelemetryEnabledByApi(CallbackInfoReturnable<Boolean> cir) {
         cir.setReturnValue(false);

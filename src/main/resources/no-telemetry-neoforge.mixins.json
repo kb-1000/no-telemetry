@@ -5,10 +5,10 @@
     "compatibilityLevel": "JAVA_16",
     "plugin": "de.kb1000.notelemetry.NoTelemetryNeoForgeMixinConfigPlugin",
     "client": [
-        "MinecraftClientMixin",
+        "MinecraftMixin",
         "NewYggdrasilUserApiServiceMixin",
         "OptionsScreenMixin",
-        "Post1193TelemetryManagerMixin",
+        "Post1193ClientTelemetryManagerMixin",
         "YggdrasilUserApiServiceMixin"
     ],
     "injectors": {
