@@ -16,17 +16,17 @@ import org.spongepowered.asm.mixin.injection.Coerce;
 import org.spongepowered.asm.mixin.injection.Group;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
-@Mixin(targets = "net.minecraft.client.session.telemetry.TelemetryManager")
+@Mixin(targets = "net.minecraft.client.telemetry.ClientTelemetryManager")
 @Environment(EnvType.CLIENT)
 public class Post1193TelemetryManagerMixin {
     @Group(name = "disableTelemetrySessionPost1193", min = 1, max = 1)
-    @Redirect(method = "Lnet/minecraft/client/session/telemetry/TelemetryManager;computeSender", at = @At(value = "FIELD", target = "Lnet/minecraft/SharedConstants;isDevelopment:Z"))
+    @Redirect(method = "createEventSender", at = @At(value = "FIELD", target = "Lnet/minecraft/SharedConstants;IS_RUNNING_IN_IDE:Z"))
     private boolean disableTelemetrySessionPre1203() {
         return true;
     }
 
     @Group(name = "disableTelemetrySessionPost1193", min = 1, max = 1)
-    @Redirect(method = "Lnet/minecraft/client/session/telemetry/TelemetryManager;computeSender", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/MinecraftClient;isTelemetryEnabledByApi()Z"))
+    @Redirect(method = "createEventSender", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/Minecraft;allowsTelemetry()Z"))
     private boolean disableTelemetrySessionPost1203(@Coerce Object minecraftClient) {
         return false;
     }

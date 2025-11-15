@@ -1,49 +1,49 @@
 {
   "mappings": {
     "de/kb1000/notelemetry/mixin/MinecraftClientMixin": {
-      "isTelemetryEnabledByApi()Z": "Lnet/minecraft/client/Minecraft;m_261210_()Z",
-      "net.minecraft.client.MinecraftClient": "net/minecraft/client/Minecraft"
-    },
-    "de/kb1000/notelemetry/mixin/Pre1193TelemetryManagerMixin": {
-      "net.minecraft.client.session.telemetry.TelemetryManager": "net/minecraft/client/ClientTelemetryManager",
-      "Lnet/minecraft/SharedConstants;isDevelopment:Z": "Lnet/minecraft/SharedConstants;f_136183_:Z"
+      "allowsTelemetry()Z": "Lnet/minecraft/client/Minecraft;m_261210_()Z",
+      "net.minecraft.client.Minecraft": "net/minecraft/client/Minecraft"
     },
     "de/kb1000/notelemetry/mixin/OptionsScreenMixin": {
-      "init": "Lnet/minecraft/client/gui/screens/OptionsScreen;m_7856_()V",
       "Lnet/minecraft/class_7845$class_7939;method_47612(Lnet/minecraft/class_339;)Lnet/minecraft/class_339;": "Lnet/minecraft/client/gui/components/GridWidget$RowHelper;m_261261_(Lnet/minecraft/client/gui/components/AbstractWidget;)Lnet/minecraft/client/gui/components/AbstractWidget;",
-      "Lnet/minecraft/client/gui/widget/GridWidget$Adder;add(Lnet/minecraft/client/gui/widget/Widget;)Lnet/minecraft/client/gui/widget/Widget;": "Lnet/minecraft/client/gui/components/GridWidget$RowHelper;m_264139_(Lnet/minecraft/client/gui/layouts/LayoutElement;)Lnet/minecraft/client/gui/layouts/LayoutElement;",
-      "Lnet/minecraft/client/gui/screen/option/OptionsScreen;TELEMETRY_TEXT:Lnet/minecraft/text/Text;": "Lnet/minecraft/client/gui/screens/OptionsScreen;f_260594_:Lnet/minecraft/network/chat/Component;",
-      "net.minecraft.client.gui.screen.option.OptionsScreen": "net/minecraft/client/gui/screens/OptionsScreen"
+      "Lnet/minecraft/client/gui/layouts/GridLayout$RowHelper;addChild(Lnet/minecraft/client/gui/layouts/LayoutElement;)Lnet/minecraft/client/gui/layouts/LayoutElement;": "Lnet/minecraft/client/gui/layouts/GridLayout$RowHelper;m_264139_(Lnet/minecraft/client/gui/layouts/LayoutElement;)Lnet/minecraft/client/gui/layouts/LayoutElement;",
+      "Lnet/minecraft/client/gui/screens/options/OptionsScreen;TELEMETRY:Lnet/minecraft/network/chat/Component;": "Lnet/minecraft/client/gui/screens/OptionsScreen;f_260594_:Lnet/minecraft/network/chat/Component;",
+      "init": "Lnet/minecraft/client/gui/screens/OptionsScreen;m_7856_()V",
+      "net.minecraft.client.gui.screens.options.OptionsScreen": "net/minecraft/client/gui/screens/OptionsScreen"
     },
     "de/kb1000/notelemetry/mixin/Post1193TelemetryManagerMixin": {
-      "net.minecraft.client.session.telemetry.TelemetryManager": "net/minecraft/client/telemetry/ClientTelemetryManager",
-      "Lnet/minecraft/SharedConstants;isDevelopment:Z": "Lnet/minecraft/SharedConstants;f_136183_:Z",
-      "Lnet/minecraft/client/session/telemetry/TelemetryManager;computeSender": "Lnet/minecraft/client/telemetry/ClientTelemetryManager;m_261052_()Lnet/minecraft/client/telemetry/TelemetryEventSender;",
-      "Lnet/minecraft/client/MinecraftClient;isTelemetryEnabledByApi()Z": "Lnet/minecraft/client/Minecraft;m_261210_()Z"
+      "Lnet/minecraft/SharedConstants;IS_RUNNING_IN_IDE:Z": "Lnet/minecraft/SharedConstants;f_136183_:Z",
+      "Lnet/minecraft/client/Minecraft;allowsTelemetry()Z": "Lnet/minecraft/client/Minecraft;m_261210_()Z",
+      "createEventSender": "Lnet/minecraft/client/telemetry/ClientTelemetryManager;m_261052_()Lnet/minecraft/client/telemetry/TelemetryEventSender;",
+      "net.minecraft.client.telemetry.ClientTelemetryManager": "net/minecraft/client/telemetry/ClientTelemetryManager"
+    },
+    "de/kb1000/notelemetry/mixin/Pre1193TelemetryManagerMixin": {
+      "Lnet/minecraft/SharedConstants;IS_RUNNING_IN_IDE:Z": "Lnet/minecraft/SharedConstants;f_136183_:Z",
+      "net.minecraft.client.telemetry.ClientTelemetryManager": "net/minecraft/client/ClientTelemetryManager"
     }
   },
   "data": {
     "searge": {
       "de/kb1000/notelemetry/mixin/MinecraftClientMixin": {
-        "isTelemetryEnabledByApi()Z": "Lnet/minecraft/client/Minecraft;m_261210_()Z",
-        "net.minecraft.client.MinecraftClient": "net/minecraft/client/Minecraft"
-      },
-      "de/kb1000/notelemetry/mixin/Pre1193TelemetryManagerMixin": {
-        "net.minecraft.client.session.telemetry.TelemetryManager": "net/minecraft/client/ClientTelemetryManager",
-        "Lnet/minecraft/SharedConstants;isDevelopment:Z": "Lnet/minecraft/SharedConstants;f_136183_:Z"
+        "allowsTelemetry()Z": "Lnet/minecraft/client/Minecraft;m_261210_()Z",
+        "net.minecraft.client.Minecraft": "net/minecraft/client/Minecraft"
       },
       "de/kb1000/notelemetry/mixin/OptionsScreenMixin": {
-        "init": "Lnet/minecraft/client/gui/screens/OptionsScreen;m_7856_()V",
         "Lnet/minecraft/class_7845$class_7939;method_47612(Lnet/minecraft/class_339;)Lnet/minecraft/class_339;": "Lnet/minecraft/client/gui/components/GridWidget$RowHelper;m_261261_(Lnet/minecraft/client/gui/components/AbstractWidget;)Lnet/minecraft/client/gui/components/AbstractWidget;",
-        "Lnet/minecraft/client/gui/widget/GridWidget$Adder;add(Lnet/minecraft/client/gui/widget/Widget;)Lnet/minecraft/client/gui/widget/Widget;": "Lnet/minecraft/client/gui/components/GridWidget$RowHelper;m_264139_(Lnet/minecraft/client/gui/layouts/LayoutElement;)Lnet/minecraft/client/gui/layouts/LayoutElement;",
-        "Lnet/minecraft/client/gui/screen/option/OptionsScreen;TELEMETRY_TEXT:Lnet/minecraft/text/Text;": "Lnet/minecraft/client/gui/screens/OptionsScreen;f_260594_:Lnet/minecraft/network/chat/Component;",
-        "net.minecraft.client.gui.screen.option.OptionsScreen": "net/minecraft/client/gui/screens/OptionsScreen"
+        "Lnet/minecraft/client/gui/layouts/GridLayout$RowHelper;addChild(Lnet/minecraft/client/gui/layouts/LayoutElement;)Lnet/minecraft/client/gui/layouts/LayoutElement;": "Lnet/minecraft/client/gui/layouts/GridLayout$RowHelper;m_264139_(Lnet/minecraft/client/gui/layouts/LayoutElement;)Lnet/minecraft/client/gui/layouts/LayoutElement;",
+        "Lnet/minecraft/client/gui/screens/options/OptionsScreen;TELEMETRY:Lnet/minecraft/network/chat/Component;": "Lnet/minecraft/client/gui/screens/OptionsScreen;f_260594_:Lnet/minecraft/network/chat/Component;",
+        "init": "Lnet/minecraft/client/gui/screens/OptionsScreen;m_7856_()V",
+        "net.minecraft.client.gui.screens.options.OptionsScreen": "net/minecraft/client/gui/screens/OptionsScreen"
       },
       "de/kb1000/notelemetry/mixin/Post1193TelemetryManagerMixin": {
-        "net.minecraft.client.session.telemetry.TelemetryManager": "net/minecraft/client/telemetry/ClientTelemetryManager",
-        "Lnet/minecraft/SharedConstants;isDevelopment:Z": "Lnet/minecraft/SharedConstants;f_136183_:Z",
-        "Lnet/minecraft/client/session/telemetry/TelemetryManager;computeSender": "Lnet/minecraft/client/telemetry/ClientTelemetryManager;m_261052_()Lnet/minecraft/client/telemetry/TelemetryEventSender;",
-        "Lnet/minecraft/client/MinecraftClient;isTelemetryEnabledByApi()Z": "Lnet/minecraft/client/Minecraft;m_261210_()Z"
+        "Lnet/minecraft/SharedConstants;IS_RUNNING_IN_IDE:Z": "Lnet/minecraft/SharedConstants;f_136183_:Z",
+        "Lnet/minecraft/client/Minecraft;allowsTelemetry()Z": "Lnet/minecraft/client/Minecraft;m_261210_()Z",
+        "createEventSender": "Lnet/minecraft/client/telemetry/ClientTelemetryManager;m_261052_()Lnet/minecraft/client/telemetry/TelemetryEventSender;",
+        "net.minecraft.client.telemetry.ClientTelemetryManager": "net/minecraft/client/telemetry/ClientTelemetryManager"
+      },
+      "de/kb1000/notelemetry/mixin/Pre1193TelemetryManagerMixin": {
+        "Lnet/minecraft/SharedConstants;IS_RUNNING_IN_IDE:Z": "Lnet/minecraft/SharedConstants;f_136183_:Z",
+        "net.minecraft.client.telemetry.ClientTelemetryManager": "net/minecraft/client/ClientTelemetryManager"
       }
     }
   }

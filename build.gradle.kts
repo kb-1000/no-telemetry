@@ -38,7 +38,6 @@ val archives_base_name: String by project.ext
 val mod_version: String by project.ext
 val maven_group: String by project.ext
 val minecraft_version: String by project.ext
-val yarn_mappings: String by project.ext
 val loader_version: String by project.ext
 val forge_version: String by project.ext
 val neofml_version: String by project.ext
@@ -50,7 +49,7 @@ group = maven_group
 dependencies {
 	// To change the versions, see the gradle.properties file
 	minecraft("com.mojang:minecraft:${minecraft_version}")
-	mappings("net.fabricmc:yarn:$yarn_mappings:v2")
+	mappings(loom.officialMojangMappings())
 	modImplementation("net.fabricmc:fabric-loader:${loader_version}")
 	compileOnly("net.minecraftforge:javafmllanguage:${forge_version}") {
 		isTransitive = false
