@@ -7,7 +7,7 @@
  * defined by the Mozilla Public License, v. 2.0.
  */
 plugins {
-	id("fabric-loom") version "1.13-SNAPSHOT"
+	id("net.fabricmc.fabric-loom-remap") version "1.14-SNAPSHOT"
 	`maven-publish`
 }
 
@@ -60,7 +60,7 @@ dependencies {
 	compileOnly("net.neoforged.fancymodloader:loader:${neofml_version}") {
 		isTransitive = false
 	}
-	compileOnly("org.apache.maven:maven-artifact:3.8.7") {
+	compileOnly("org.apache.maven:maven-artifact:3.9.12") {
 		isTransitive = false
 	}
 }
