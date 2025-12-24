@@ -1,6 +1,6 @@
 {
   "mappings": {
-    "de/kb1000/notelemetry/mixin/MinecraftClientMixin": {
+    "de/kb1000/notelemetry/mixin/MinecraftMixin": {
       "allowsTelemetry()Z": "Lnet/minecraft/client/Minecraft;m_261210_()Z",
       "net.minecraft.client.Minecraft": "net/minecraft/client/Minecraft"
     },
@@ -11,20 +11,20 @@
       "init": "Lnet/minecraft/client/gui/screens/OptionsScreen;m_7856_()V",
       "net.minecraft.client.gui.screens.options.OptionsScreen": "net/minecraft/client/gui/screens/OptionsScreen"
     },
-    "de/kb1000/notelemetry/mixin/Post1193TelemetryManagerMixin": {
+    "de/kb1000/notelemetry/mixin/Post1193ClientTelemetryManagerMixin": {
       "Lnet/minecraft/SharedConstants;IS_RUNNING_IN_IDE:Z": "Lnet/minecraft/SharedConstants;f_136183_:Z",
       "Lnet/minecraft/client/Minecraft;allowsTelemetry()Z": "Lnet/minecraft/client/Minecraft;m_261210_()Z",
       "createEventSender": "Lnet/minecraft/client/telemetry/ClientTelemetryManager;m_261052_()Lnet/minecraft/client/telemetry/TelemetryEventSender;",
       "net.minecraft.client.telemetry.ClientTelemetryManager": "net/minecraft/client/telemetry/ClientTelemetryManager"
     },
-    "de/kb1000/notelemetry/mixin/Pre1193TelemetryManagerMixin": {
+    "de/kb1000/notelemetry/mixin/Pre1193ClientTelemetryManagerMixin": {
       "Lnet/minecraft/SharedConstants;IS_RUNNING_IN_IDE:Z": "Lnet/minecraft/SharedConstants;f_136183_:Z",
       "net.minecraft.client.telemetry.ClientTelemetryManager": "net/minecraft/client/ClientTelemetryManager"
     }
   },
   "data": {
     "searge": {
-      "de/kb1000/notelemetry/mixin/MinecraftClientMixin": {
+      "de/kb1000/notelemetry/mixin/MinecraftMixin": {
         "allowsTelemetry()Z": "Lnet/minecraft/client/Minecraft;m_261210_()Z",
         "net.minecraft.client.Minecraft": "net/minecraft/client/Minecraft"
       },
@@ -35,13 +35,13 @@
         "init": "Lnet/minecraft/client/gui/screens/OptionsScreen;m_7856_()V",
         "net.minecraft.client.gui.screens.options.OptionsScreen": "net/minecraft/client/gui/screens/OptionsScreen"
       },
-      "de/kb1000/notelemetry/mixin/Post1193TelemetryManagerMixin": {
+      "de/kb1000/notelemetry/mixin/Post1193ClientTelemetryManagerMixin": {
         "Lnet/minecraft/SharedConstants;IS_RUNNING_IN_IDE:Z": "Lnet/minecraft/SharedConstants;f_136183_:Z",
         "Lnet/minecraft/client/Minecraft;allowsTelemetry()Z": "Lnet/minecraft/client/Minecraft;m_261210_()Z",
         "createEventSender": "Lnet/minecraft/client/telemetry/ClientTelemetryManager;m_261052_()Lnet/minecraft/client/telemetry/TelemetryEventSender;",
         "net.minecraft.client.telemetry.ClientTelemetryManager": "net/minecraft/client/telemetry/ClientTelemetryManager"
       },
-      "de/kb1000/notelemetry/mixin/Pre1193TelemetryManagerMixin": {
+      "de/kb1000/notelemetry/mixin/Pre1193ClientTelemetryManagerMixin": {
         "Lnet/minecraft/SharedConstants;IS_RUNNING_IN_IDE:Z": "Lnet/minecraft/SharedConstants;f_136183_:Z",
         "net.minecraft.client.telemetry.ClientTelemetryManager": "net/minecraft/client/ClientTelemetryManager"
       }
