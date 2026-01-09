@@ -14,6 +14,15 @@ import net.fabricmc.loader.api.VersionParsingException;
 
 public class NoTelemetryFabricMixinConfigPlugin extends NoTelemetryAbstractMixinConfigPlugin {
     @Override
+    public String getRefMapperConfig() {
+        if (this.minecraftNewerThan("26")) {
+            return "no-telemetry-mojank-refmap.json";
+        } else {
+            return "no-telemetry-refmap.json";
+        }
+    }
+
+    @Override
     protected boolean minecraftNewerThan(String version) {
         try {
             return FabricLoader.getInstance().getModContainer("minecraft").orElseThrow().getMetadata().getVersion().compareTo(SemanticVersion.parse(version)) >= 0;
