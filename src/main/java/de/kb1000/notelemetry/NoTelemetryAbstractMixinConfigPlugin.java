@@ -32,10 +32,10 @@ public abstract class NoTelemetryAbstractMixinConfigPlugin implements IMixinConf
                     !this.minecraftNewerThan("1.18-beta.3");
             case "de.kb1000.notelemetry.mixin.NewYggdrasilUserApiServiceMixin" ->
                     this.minecraftNewerThan("1.18-beta.3");
-            case "de.kb1000.notelemetry.mixin.Pre1193TelemetryManagerMixin" ->
+            case "de.kb1000.notelemetry.mixin.Pre1193ClientTelemetryManagerMixin" ->
                     !this.minecraftNewerThan("1.19.3-alpha.22.46.a");
-            case "de.kb1000.notelemetry.mixin.MinecraftClientMixin", "de.kb1000.notelemetry.mixin.OptionsScreenMixin",
-                 "de.kb1000.notelemetry.mixin.Post1193TelemetryManagerMixin" -> this.minecraftNewerThan("1.19.3-alpha.22.46.a");
+            case "de.kb1000.notelemetry.mixin.MinecraftMixin", "de.kb1000.notelemetry.mixin.OptionsScreenMixin",
+                 "de.kb1000.notelemetry.mixin.Post1193ClientTelemetryManagerMixin" -> this.minecraftNewerThan("1.19.3-alpha.22.46.a");
             default -> true;
         };
     }
