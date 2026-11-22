@@ -22,21 +22,6 @@ public class NoTelemetryForgeMixinConfigPlugin extends NoTelemetryAbstractMixinC
     }
 
     @Override
-    public String getRefMapperConfig() {
-        if (this.isForgeNeo) {
-            return null;
-        }
-
-        if (this.minecraftNewerThan("1.21")) {
-            return "no-telemetry-mojank-refmap.json";
-        } else if (this.minecraftNewerThan("1.20.5")) {
-            return "no-telemetry-mojank-1.20-refmap.json";
-        }
-
-        return "no-telemetry-forge-refmap.json";
-    }
-
-    @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
         if (this.isForgeNeo) {
             return false;

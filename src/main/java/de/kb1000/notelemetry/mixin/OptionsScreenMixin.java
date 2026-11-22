@@ -8,20 +8,23 @@
  */
 package de.kb1000.notelemetry.mixin;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
+import net.minecraft.client.gui.layouts.GridLayout;
+import net.minecraft.client.gui.layouts.LayoutElement;
+import net.minecraft.client.gui.screens.options.OptionsScreen;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.*;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Slice;
 
-@Mixin(targets = "net.minecraft.client.gui.screens.options.OptionsScreen")
+/**
+ * Uses @WrapOperation instead of @Redirect: current Fabric Loader builds encode @Redirect.at as an array, which the
+ * MixinExtras shipped with Forge cannot read.
+ */
+@Mixin(OptionsScreen.class)
 public class OptionsScreenMixin {
-    @Group(name = "removeTelemetryButton", min = 1, max = 1)
-    @Redirect(method = "init", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/layouts/GridLayout$RowHelper;addChild(Lnet/minecraft/client/gui/layouts/LayoutElement;)Lnet/minecraft/client/gui/layouts/LayoutElement;", ordinal = 0), slice = @Slice(from = @At(value = "FIELD", target = "Lnet/minecraft/client/gui/screens/options/OptionsScreen;TELEMETRY:Lnet/minecraft/network/chat/Component;")))
-    private @Coerce Object removeTelemetryButton(@Coerce Object adder, @Coerce Object widget) {
-        return widget;
-    }
-
-    @Group(name = "removeTelemetryButton", min = 1, max = 1)
-    @Redirect(method = "init", at = @At(value = "INVOKE", target = "Lnet/minecraft/class_7845$class_7939;method_47612(Lnet/minecraft/class_339;)Lnet/minecraft/class_339;", ordinal = 0), slice = @Slice(from = @At(value = "FIELD", target = "Lnet/minecraft/client/gui/screens/options/OptionsScreen;TELEMETRY:Lnet/minecraft/network/chat/Component;")))
-    private @Coerce Object removeTelemetryButtonOld(@Coerce Object adder, @Coerce Object widget) {
-        return widget;
+    @WrapOperation(method = "init()V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/layouts/GridLayout$RowHelper;addChild(Lnet/minecraft/client/gui/layouts/LayoutElement;)Lnet/minecraft/client/gui/layouts/LayoutElement;", ordinal = 0), slice = @Slice(from = @At(value = "FIELD", target = "Lnet/minecraft/client/gui/screens/options/OptionsScreen;TELEMETRY:Lnet/minecraft/network/chat/Component;")))
+    private LayoutElement removeTelemetryButton(GridLayout.RowHelper rowHelper, LayoutElement element, Operation<LayoutElement> original) {
+        return element;
     }
 }

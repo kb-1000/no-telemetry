@@ -28,16 +28,15 @@ public abstract class NoTelemetryAbstractMixinConfigPlugin implements IMixinConf
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
         return switch (mixinClassName) {
-            case "de.kb1000.notelemetry.mixin.YggdrasilUserApiServiceMixin" ->
-                    !this.minecraftNewerThan("1.18-beta.3");
-            case "de.kb1000.notelemetry.mixin.NewYggdrasilUserApiServiceMixin" ->
-                    this.minecraftNewerThan("1.18-beta.3");
-            case "de.kb1000.notelemetry.mixin.Pre1193ClientTelemetryManagerMixin" ->
-                    !this.minecraftNewerThan("1.19.3-alpha.22.46.a");
-            case "de.kb1000.notelemetry.mixin.MinecraftMixin", "de.kb1000.notelemetry.mixin.OptionsScreenMixin",
-                 "de.kb1000.notelemetry.mixin.Post1193ClientTelemetryManagerMixin" -> this.minecraftNewerThan("1.19.3-alpha.22.46.a");
+            // authlib 10 (Minecraft 26.3) replaced YggdrasilUserApiService with MinecraftServicesUserApiService
+            case "de.kb1000.notelemetry.mixin.YggdrasilUserApiServiceMixin",
+                 "de.kb1000.notelemetry.mixin.ServicesUserApiServiceMixin" -> classExists(targetClassName);
             default -> true;
         };
+    }
+
+    private static boolean classExists(String className) {
+        return NoTelemetryAbstractMixinConfigPlugin.class.getClassLoader().getResource(className.replace('.', '/') + ".class") != null;
     }
 
     @Override

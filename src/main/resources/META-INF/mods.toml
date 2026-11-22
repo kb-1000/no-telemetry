@@ -17,7 +17,7 @@ logoBlur = false
 authors = "kb1000"
 displayURL = "https://github.com/kb-1000/no-telemetry"
 
-[[no-telemetry.dependencies]]
+[[dependencies.no_telemetry]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.18,)"
+versionRange = "[26,)"

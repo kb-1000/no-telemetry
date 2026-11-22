@@ -7,7 +7,8 @@
  * defined by the Mozilla Public License, v. 2.0.
  */
 plugins {
-	id("net.fabricmc.fabric-loom-remap") version "1.14-SNAPSHOT"
+	// Minecraft 26.1+ is unobfuscated, so the non-remapping Loom is used and no refmaps are generated.
+	id("net.fabricmc.fabric-loom") version "1.19-SNAPSHOT"
 	`maven-publish`
 }
 
@@ -34,13 +35,13 @@ repositories {
 	}
 }
 
-val archives_base_name: String by project.ext
-val mod_version: String by project.ext
-val maven_group: String by project.ext
-val minecraft_version: String by project.ext
-val loader_version: String by project.ext
-val forge_version: String by project.ext
-val neofml_version: String by project.ext
+val archives_base_name = providers.gradleProperty("archives_base_name").get()
+val mod_version = providers.gradleProperty("mod_version").get()
+val maven_group = providers.gradleProperty("maven_group").get()
+val minecraft_version = providers.gradleProperty("minecraft_version").get()
+val loader_version = providers.gradleProperty("loader_version").get()
+val forge_version = providers.gradleProperty("forge_version").get()
+val neofml_version = providers.gradleProperty("neofml_version").get()
 
 base.archivesName.set(archives_base_name)
 version = mod_version
@@ -49,8 +50,7 @@ group = maven_group
 dependencies {
 	// To change the versions, see the gradle.properties file
 	minecraft("com.mojang:minecraft:${minecraft_version}")
-	mappings(loom.officialMojangMappings())
-	modImplementation("net.fabricmc:fabric-loader:${loader_version}")
+	implementation("net.fabricmc:fabric-loader:${loader_version}")
 	compileOnly("net.minecraftforge:javafmllanguage:${forge_version}") {
 		isTransitive = false
 	}
@@ -60,16 +60,18 @@ dependencies {
 	compileOnly("net.neoforged.fancymodloader:loader:${neofml_version}") {
 		isTransitive = false
 	}
-	compileOnly("org.apache.maven:maven-artifact:3.9.12") {
+	compileOnly("org.apache.maven:maven-artifact:3.9.16") {
 		isTransitive = false
 	}
 }
 
 tasks.processResources {
-	inputs.property("version", project.version)
+	// Captured at configuration time; reading project.version inside filesMatching is deprecated in Gradle 9.
+	val modVersion = project.version.toString()
+	inputs.property("version", modVersion)
 
 	filesMatching("fabric.mod.json") {
-		expand("version" to project.version)
+		expand("version" to modVersion)
 	}
 }
 
@@ -93,12 +95,6 @@ java {
 	// If you remove this line, sources will not be generated.
 	withSourcesJar()
     withJavadocJar()
-}
-
-loom {
-	mixin {
-		useLegacyMixinAp = true
-	}
 }
 
 tasks.jar {

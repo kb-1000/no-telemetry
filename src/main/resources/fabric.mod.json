@@ -24,8 +24,8 @@
         "no-telemetry.mixins.json"
     ],
     "depends": {
-        "fabricloader": ">=0.14.0",
-        "minecraft": ">=1.18-alpha.21.38.a",
+        "fabricloader": ">=0.15.0",
+        "minecraft": ">=26.1-",
         "java": ">=16"
     }
 }

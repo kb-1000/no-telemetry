@@ -20,15 +20,6 @@ import java.lang.invoke.MethodType;
 
 public class NoTelemetryNeoForgeMixinConfigPlugin extends NoTelemetryAbstractMixinConfigPlugin {
     @Override
-    public String getRefMapperConfig() {
-        if (this.minecraftNewerThan("1.21")) {
-            return "no-telemetry-mojank-refmap.json";
-        } else {
-            return "no-telemetry-mojank-1.20-refmap.json";
-        }
-    }
-
-    @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
         // We can just use the mixin.json for this, for now!
         return true;
